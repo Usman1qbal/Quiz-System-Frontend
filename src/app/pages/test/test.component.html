@@ -1,0 +1,16 @@
+<div *ngIf="test">
+    <h3>Select an option from each of the following questions.</h3>
+    <h4>Timer:<strong>{{clock}} sec left</strong></h4>
+    <form [formGroup]="form" (submit)="submitTest()">
+        <ul *ngFor="let question of test.questions">
+            {{question.description}}
+            <div *ngFor="let options of question.options; let i = index;">
+                <input id="option{{i}}" type="radio" formControlName="{{question.formControleName}}"
+                    [value]="options.option">
+                <label for="option{{i}}">{{options.option}}</label>
+            </div>
+            <hr>
+        </ul>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

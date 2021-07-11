@@ -1,0 +1,16 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th *ngFor="let header of headers">{{header}}</th>
+            <th *ngIf="action">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data">
+            <td *ngFor="let k of objectKeys(keysObj)">{{item[k]}}</td>
+            <td *ngIf="action"><a [routerLink]="['/test', item.id]" routerLinkActive="active">Start Test</a>
+                <button *ngIf="action === 'detail'" class="btn btn-primary" (click)="showDetail()">Show Detail</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

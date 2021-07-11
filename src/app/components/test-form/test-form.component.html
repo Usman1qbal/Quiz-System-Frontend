@@ -1,0 +1,9 @@
+<form [formGroup]="myForm" (submit)="registerUser()">
+    <div><label>Test Title</label><input class="form-control" formControlName="title" /></div>
+    <h3>Select any 4 questions from the following list of questions.</h3>
+    <div *ngFor="let question of questions$ | async">
+        <input type="checkbox" (change)="onChange(question.id, $event)"> <span>{{question.description}}</span><br>
+        <hr>
+    </div>
+    <button class="btn btn-primary" type="submit">Create</button>
+</form>
